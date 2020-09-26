@@ -20,7 +20,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[fieldservice](fieldservice/) | 12.0.2.10.0 | Manage Field Service Locations, Workers and Orders
+[fieldservice](fieldservice/) | 12.0.2.12.0 | Manage Field Service Locations, Workers and Orders
 [fieldservice_account](fieldservice_account/) | 12.0.3.1.1 | Track invoices linked to Field Service orders
 [fieldservice_account_analytic](fieldservice_account_analytic/) | 12.0.3.3.0 | Track analytic accounts on Field Service locations and orders
 [fieldservice_account_payment](fieldservice_account_payment/) | 12.0.1.1.0 | Allow workers to collect payments from the order.
@@ -41,7 +41,7 @@ addon | version | summary
 [fieldservice_partner_multi_relation](fieldservice_partner_multi_relation/) | 12.0.1.0.0 | Manage relations between contacts, companies and locations
 [fieldservice_project](fieldservice_project/) | 12.0.1.2.0 | Create field service orders from a project or project task
 [fieldservice_purchase](fieldservice_purchase/) | 12.0.1.1.0 | Manage FSM Purchases
-[fieldservice_recurring](fieldservice_recurring/) | 12.0.1.1.1 | Manage recurring Field Service orders
+[fieldservice_recurring](fieldservice_recurring/) | 12.0.1.2.0 | Manage recurring Field Service orders
 [fieldservice_repair](fieldservice_repair/) | 12.0.1.0.0 | Integrate Field Service orders with MRP repair orders
 [fieldservice_route](fieldservice_route/) | 12.0.2.2.0 | Organize the routes of each day.
 [fieldservice_route_account](fieldservice_route_account/) | 12.0.1.1.1 | Field Service Route Account
@@ -53,10 +53,11 @@ addon | version | summary
 [fieldservice_size](fieldservice_size/) | 12.0.0.1.1 | Manage Sizes for Field Service Locations and Orders
 [fieldservice_skill](fieldservice_skill/) | 12.0.1.0.0 | Manage your Field Service workers skills
 [fieldservice_stage_server_action](fieldservice_stage_server_action/) | 12.0.1.0.0 | Execute server actions when reaching a Field Service stage
+[fieldservice_stage_validation](fieldservice_stage_validation/) | 12.0.0.2.0 | Validate input data when reaching a Field Service stage
 [fieldservice_stock](fieldservice_stock/) | 12.0.2.1.1 | Integrate the logistics operations with Field Service
 [fieldservice_stock_account](fieldservice_stock_account/) | 12.0.1.0.1 | Invoice inventory items delivered with Field Service orders
 [fieldservice_stock_account_analytic](fieldservice_stock_account_analytic/) | 12.0.1.0.2 | Track costs of delivered items with analytic accounting
-[fieldservice_substatus](fieldservice_substatus/) | 12.0.1.1.0 | Add sub-statuses to Field Service orders
+[fieldservice_substatus](fieldservice_substatus/) | 12.0.1.2.0 | Add sub-statuses to Field Service orders
 [fieldservice_vehicle](fieldservice_vehicle/) | 12.0.2.1.1 | Manage Field Service vehicles and assign drivers
 [fieldservice_vehicle_stock](fieldservice_vehicle_stock/) | 12.0.1.2.2 | Track inventory of Field Service vehicles
 

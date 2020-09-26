@@ -6,3 +6,5 @@ hr
 partner-contact
 stock-logistics-warehouse
 web
+management-system
+helpdesk

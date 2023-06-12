@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2023 - TODAY, Marcel Savegnago <marcel.savegnago@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="fsm_stage_form_view">
+        <field name="name">fsm.stage.form (in fieldservice_rating)</field>
+        <field name="model">fsm.stage</field>
+        <field name="inherit_id" ref="fieldservice.fsm_stage_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="rating_mail_template_id" />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="fsm_stage_tree_view" >
+        <field name="name">fsm.stage.tree (in fieldservice_rating)</field>
+        <field name="model">fsm.stage</field>
+        <field name="inherit_id" ref="fieldservice.fsm_stage_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='custom_color']" position="after">
+                <field name="rating_mail_template_id" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -23,7 +23,7 @@ class FsmOrder(models.Model):
         ],
         string="Customer Rating",
         default="stage_change",
-        require=True,
+        required=True,
     )
 
     @api.depends("rating_ids.rating")
@@ -55,12 +55,12 @@ class FsmOrder(models.Model):
                         force_send=force_send,
                     )
 
-    def rating_apply(self, rate, token=None, feedback=None, subtype=None):
+    def rating_apply(self, rate, token=None, feedback=None, subtype_xmlid=None):
         return super().rating_apply(
             rate,
             token=token,
             feedback=feedback,
-            subtype="fieldservice_rating.mt_fsm_order_rating",
+            subtype_xmlid="fieldservice_rating.mt_fsm_order_rating",
         )
 
     def rating_get_partner_id(self):
@@ -82,11 +82,12 @@ class FsmOrder(models.Model):
         return self.id
 
     def action_view_fsm_order_rating(self):
-        action = self.env["ir.actions.act_window"].for_xml_id(
-            "fieldservice_rating", "fieldservice_fsm_order_rating_action"
+        action = self.env["ir.actions.act_window"]._for_xml_id(
+            "fieldservice_rating.fsm_order_rating_action"
         )
         action["name"] = _("FSM Order Rating")
         action_context = safe_eval(action["context"]) if action["context"] else {}
-        action_context.update(self._context)
+        action_context.update(self.env.context)
         action_context.pop("group_by", None)
-        return dict(action, context=action_context)
+        action["context"] = action_context
+        return action

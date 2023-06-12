@@ -6,7 +6,7 @@ from odoo.tools.safe_eval import safe_eval
 
 
 class FsmOrder(models.Model):
-    _name = 'fsm.order'
+    _name = "fsm.order"
     _inherit = ["fsm.order", "rating.mixin"]
 
     positive_rate_percentage = fields.Integer(
@@ -71,7 +71,7 @@ class FsmOrder(models.Model):
 
     def rating_get_rated_partner_id(self):
         res = super().rating_get_partner_id()
-        if hasattr(self, 'person_id') and self.person_id.partner_id:
+        if hasattr(self, "person_id") and self.person_id.partner_id:
             return self.person_id.partner_id
         return res
 

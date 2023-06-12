@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2023 - TODAY, Marcel Savegnago <marcel.savegnago@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="fsm_order_form_view">
+        <field name="name">fsm.order.form (in fieldservice_rating)</field>
+        <field name="model">fsm.order</field>
+        <field name="inherit_id" ref="fieldservice.fsm_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="before">
+                <field name="positive_rate_percentage" invisible="1" />
+            </xpath>
+            <div name="button_box" position="inside">
+                <button
+                    name="action_view_fsm_order_rating"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-smile-o"
+                    attrs="{'invisible': [('positive_rate_percentage', '=', -1)]}"
+                >
+                    <field name="rating_count" widget="statinfo" string="Ratings" />
+                </button>
+            </div>
+            <xpath expr="//group/group[2]" position="after">
+                <group>
+                    <field name="rating_status" widget="radio" />
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+<!--    <record model="ir.ui.view" id="fsm_order_search_view">-->
+<!--        <field name="name">fsm.order.search (in fieldservice_rating)</field>-->
+<!--        <field name="model">fsm.order</field>-->
+<!--        <field name="inherit_id" ref="TODO othermodule.search_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            &lt;!&ndash; TODO &ndash;&gt;-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record model="ir.ui.view" id="fsm_order_tree_view">-->
+<!--        <field name="name">fsm.order.tree (in fieldservice_rating)</field>-->
+<!--        <field name="model">fsm.order</field>-->
+<!--        <field name="inherit_id" ref="TODO othermodule.tree_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            &lt;!&ndash; TODO &ndash;&gt;-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+    <record model="ir.ui.view" id="fsm_order_kanban_view">
+        <field name="name">fsm.order.kanban (in fieldservice_rating)</field>
+        <field name="model">fsm.order</field>
+        <field name="inherit_id" ref="fieldservice.fsm_order_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_kanban_bottom_left')]" position="inside">
+                <field name="positive_rate_percentage" invisible="1" />
+                <b>
+                    <t t-if="record.positive_rate_percentage.value != -1">
+                        <a name="action_view_fsm_order_rating" type="object">
+                            <i class="fa fa-smile-o" /> <t
+                                t-esc="record.positive_rate_percentage.value"
+                            />%
+                        </a>
+                    </t>
+                </b>
+            </xpath>
+            <xpath expr="//div[hasclass('dropdown-menu')]/ul[1]" position="after">
+                <li>
+                    <a
+                        name="action_view_fsm_order_rating"
+                        type="object"
+                    >Customer Rating</a>
+                </li>
+            </xpath>
+        </field>
+    </record>
+
+
+
+</odoo>
+

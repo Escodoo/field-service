@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <form string="Order">
                 <header>
+                    <field name="is_closed" invisible="1" />
                     <button
                         id="action_complete"
                         name="action_complete"
@@ -13,7 +14,7 @@
                         class="oe_highlight"
                         type="object"
                         groups="fieldservice.group_fsm_user_own"
-                        attrs="{'invisible': [('stage_id', 'in', (%(fieldservice.fsm_stage_completed)d, %(fieldservice.fsm_stage_cancelled)d))]}"
+                        attrs="{'invisible': [('is_closed', '=', True)]}"
                     />
                     <field name="is_button" invisible="1" />
                     <button

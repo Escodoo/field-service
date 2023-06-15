@@ -9,6 +9,8 @@ class FsmOrder(models.Model):
     _inherit = "fsm.order"
 
     partner_feedback_ids = fields.Many2many("res.partner", string="Asked Feedback")
+    person_partner_id = fields.Many2one("res.partner", related="person_id.partner_id")
+    person_user_ids = fields.One2many("res.users", related="person_partner_id.user_ids")
 
     def action_ask_feedback(self):
         self.ensure_one()

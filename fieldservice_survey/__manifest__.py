@@ -14,7 +14,8 @@
         "survey",
     ],
     "data": [
-        "security/fieldservice_survey_security.xml",
+        "security/res_groups.xml",
+        "security/ir_rule.xml",
         "security/ir.model.access.csv",
         "views/res_config_settings.xml",
         "views/res_company.xml",

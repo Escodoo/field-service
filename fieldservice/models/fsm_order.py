@@ -233,6 +233,12 @@ class FSMOrder(models.Model):
         string="Internal Type", related="type.internal_type"
     )
 
+    is_closed = fields.Boolean(
+        "Is closed",
+        related="stage_id.is_closed",
+        help="Services are considered as closed.",
+    )
+
     @api.model
     def _read_group_stage_ids(self, stages, domain, order):
         search_domain = [("stage_type", "=", "order")]

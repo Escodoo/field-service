@@ -70,6 +70,9 @@ class ResConfigSettings(models.TransientModel):
     module_fieldservice_timeline = fields.Boolean(
         string="Allow Field Service Web Timeline View"
     )
+    module_fieldservice_survey = fields.Boolean(
+        string="Enable feedback request through surveys"
+    )
 
     # Companies
     auto_populate_persons_on_location = fields.Boolean(

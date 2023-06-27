@@ -84,7 +84,8 @@ class FsmOrderSurveySubmit(models.TransientModel):
         if not self.env.user.email:
             raise UserError(
                 _(
-                    "Unable to post message, please configure the sender's email address."
+                    "Unable to post message, please configure the "
+                    "sender's email address."
                 )
             )
         result = super().default_get(fields_list)

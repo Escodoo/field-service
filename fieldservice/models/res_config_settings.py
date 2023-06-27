@@ -77,6 +77,9 @@ class ResConfigSettings(models.TransientModel):
         string='Manage Vehicles')
     module_fieldservice_substatus = fields.Boolean(
         string='Manage Sub-Statuses')
+    module_fieldservice_survey = fields.Boolean(
+        string="Enable feedback request through surveys"
+    )
 
     # Companies
     auto_populate_persons_on_location = fields.Boolean(

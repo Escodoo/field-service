@@ -8,7 +8,7 @@
         <field name="model">survey.survey</field>
         <field name="inherit_id" ref="survey.survey_form" />
         <field name="arch" type="xml">
-            <field name="access_mode" position="after">
+            <field name="quizz_mode" position="after">
                 <field name="is_fsm_order_survey" />
             </field>
         </field>

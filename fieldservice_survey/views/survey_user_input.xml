@@ -6,9 +6,9 @@
     <record model="ir.ui.view" id="survey_user_input_form_view">
         <field name="name">survey.user_input.form (in fieldservice_survey)</field>
         <field name="model">survey.user_input</field>
-        <field name="inherit_id" ref="survey.survey_user_input_view_form" />
+        <field name="inherit_id" ref="survey.survey_user_input_form" />
         <field name="arch" type="xml">
-            <field name="access_token" position="after">
+            <field name="token" position="after">
                 <field
                     name="fsm_order_id"
                     attrs="{'invisible': [('fsm_order_id', '==', False)]}"

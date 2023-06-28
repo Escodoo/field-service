@@ -109,21 +109,34 @@ class FsmOrderSurveySurvey(Survey):
             raise AccessDenied(_("No survey found for the given FSM Order"))
 
         post["fsm_order_id"] = fsm_order_id
-        user_input_lines_sudo, search_filters = self._extract_filters_data(
-            survey_sudo, post
-        )
-        survey_data = survey_sudo._prepare_statistics(user_input_lines_sudo)
-        question_and_page_data = survey_sudo.question_and_page_ids._prepare_statistics(
-            user_input_lines_sudo
-        )
 
-        template_values = {
-            "survey": survey_sudo,
-            "question_and_page_data": question_and_page_data,
-            "survey_data": survey_data,
-            "search_filters": search_filters,
-            "search_finished": "true",
-            "fsm_order_id": fsm_order_id,
-        }
+        result_template = 'survey.result'
+        current_filters = []
+        filter_display_data = []
+        filter_finish = False
 
-        return request.render("survey.survey_page_statistics", template_values)
+        if (
+            not survey_sudo.user_input_ids or not [
+                input_id.id for input_id in
+                survey_sudo.user_input_ids if input_id.state != 'new']
+        ):
+            result_template = 'survey.no_result'
+        if 'finished' in post:
+            post.pop('finished')
+            filter_finish = True
+        if post or filter_finish:
+            filter_data = self.get_filter_data(post)
+            current_filters = survey_sudo.filter_input_ids(filter_data, filter_finish)
+            filter_display_data = survey_sudo.get_filter_display_data(filter_data)
+
+        return request.render(result_template,
+                              {
+                                  'survey': survey_sudo,
+                                  'survey_dict': self.prepare_result_dict(
+                                      survey_sudo, current_filters
+                                  ),
+                                  'page_range': self.page_range,
+                                  'current_filters': current_filters,
+                                  'filter_display_data': filter_display_data,
+                                  'filter_finish': filter_finish
+                              })

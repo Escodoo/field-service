@@ -140,21 +140,31 @@ class FsmOrderSurveySubmit(models.TransientModel):
             )
 
         for new_partner in recipients - partners_done:
-            answers |= self.survey_template_id.sudo()._create_answer(
-                partner=new_partner, check_attempts=False, deadline=self.deadline
-            )
+            new_answer = self.env["survey.user_input"].create({
+                "survey_id": self.survey_template_id.id,
+                "fsm_order_id": self.fsm_order_id.id,
+                "partner_id": new_partner.id,
+                "deadline": self.deadline,
+                # "check_attempts": False,
+            })
+            answers |= new_answer
         return answers
 
     def _send_mail(self, answer):
         """Create mail specific for recipient containing notably its access token."""
         ctx = {"fsm_order_name": self.fsm_order_id.name}
-        RenderMixin = self.env["mail.render.mixin"].with_context(**ctx)
-        subject = RenderMixin._render_template(
+        RenderTemplate = self.env["mail.template"].with_context(**ctx)
+        subject = RenderTemplate._render_template(
             self.subject, "survey.user_input", answer.ids, post_process=True
         )[answer.id]
-        body = RenderMixin._render_template(
+        body = RenderTemplate._render_template(
             self.body, "survey.user_input", answer.ids, post_process=True
         )[answer.id]
+
+        url = self.survey_template_id.public_url
+
+        if answer.token:
+            url = url + '/' + answer.token
 
         mail_values = {
             "email_from": self.email_from,
@@ -162,7 +172,8 @@ class FsmOrderSurveySubmit(models.TransientModel):
             "model": None,
             "res_id": None,
             "subject": subject,
-            "body_html": body,
+            "body": body.replace("__URL__", url),
+            "body_html": body.replace("__URL__", url),
             "attachment_ids": [(4, att.id) for att in self.attachment_ids],
             "auto_delete": True,
         }
@@ -194,13 +205,13 @@ class FsmOrderSurveySubmit(models.TransientModel):
                 "model_description": self.env["ir.model"]
                 ._get("fsm.order.survey.submit")
                 .display_name,
-                "company": self.env.company,
+                "company": self.env.user.company_id
             }
-            body = template._render(
+            body = template.render(
                 template_ctx, engine="ir.qweb", minimal_qcontext=True
             )
             mail_values["body_html"] = self.env[
-                "mail.render.mixin"
+                "mail.thread"
             ]._replace_local_links(body)
 
         return self.env["mail.mail"].sudo().create(mail_values)
@@ -233,7 +244,7 @@ class FsmOrderSurveySubmit(models.TransientModel):
                     "An survey was requested. Please take time to fill "
                     'the <a href="%s" target="_blank">survey</a>'
                 )
-                % answer.get_start_url(),
+                % self.__URL__,
                 user_id=person.user_id.id,
             )
 

@@ -1,0 +1,368 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fieldservice_survey
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-28 16:11+0000\n"
+"PO-Revision-Date: 2023-06-28 13:39-0300\n"
+"Last-Translator: Marcel Savegnago <marcel.savegnago@gmail.com>\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.3.1\n"
+
+#. module: fieldservice_survey
+#: model:mail.template,report_name:fieldservice_survey.mail_template_fsm_order_survey_submit
+msgid "${(object.name or '').replace('/','_')}"
+msgstr "${(object.name or '').replace('/','_')}"
+
+#. module: fieldservice_survey
+#: model:mail.template,body_html:fieldservice_survey.mail_template_fsm_order_survey_submit
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;"
+"\">\n"
+"                        Dear ${object.partner_id.name},\n"
+"                        <br/><br/>\n"
+"                        An survey was requested.\n"
+"                        <br/>\n"
+"                        Please take time to fill the survey.\n"
+"                        <br/><br/>\n"
+"                        Thank you!\n"
+"                        <br/><br/>\n"
+"                        % if ctx.get('recipient_users'):\n"
+"                        <p style=\"margin: 16px 0px 16px 0px;\">\n"
+"                            <a href=\"${ctx['url']}\" style=\"background-"
+"color:#875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: "
+"#fff; border-radius: 5px;\">\n"
+"                                View Survey\n"
+"                            </a>\n"
+"                        </p>\n"
+"                        % endif\n"
+"                        <div style=\"margin: 16px 0px 16px 0px;\">\n"
+"                            <a href=\"__URL__\" style=\"background-color: "
+"#875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; "
+"border-radius: 5px; font-size:13px;\">\n"
+"                                % if object.survey_id.certification:\n"
+"                                    Start Certification\n"
+"                                % else:\n"
+"                                    Start Survey\n"
+"                                % endif\n"
+"                            </a>\n"
+"                        </div>\n"
+"                        % if object.deadline:\n"
+"                            Please answer the survey before "
+"${format_date(object.deadline)}.<br/><br/>\n"
+"                        % endif\n"
+"                        <br/><br/>\n"
+"                        <tr><td style=\"padding:15px 20px 10px 20px;"
+"\">${(object.signature or '')| safe}</td></tr>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;"
+"\">\n"
+"                        Prezado ${object.partner_id.name},\n"
+"                       <br/><br/>\n"
+"                        Foi solicitada uma pesquisa.\n"
+"                       <br/>\n"
+"                        Por favor, reserve um tempo para preencher a "
+"pesquisa.\n"
+"                       <br/><br/>\n"
+"                        Obrigado a você!\n"
+"                       <br/><br/>\n"
+"                        % if ctx.get('recipient_users'):\n"
+"                        <p style=\"margin: 16px 0px 16px 0px;\">\n"
+"                            <a href=\"${ctx['url']}\" style=\"background-"
+"color:#875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: "
+"#fff; border-radius: 5px;\">\n"
+"                                Visualizar pesquisa\n"
+"                            </a>\n"
+"                        </p>\n"
+"                       % endif\n"
+"                        <div style=\"margin: 16px 0px 16px 0px;\">\n"
+"                            <a href=\"__URL__\" style=\"background-color: "
+"#875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; "
+"border-radius: 5px; font-size:13px;\">\n"
+"                               % if object.survey_id.certification:\n"
+"                                    Iniciar certificação\n"
+"                               % else:\n"
+"                                    Iniciar pesquisa\n"
+"                               % endif\n"
+"                            </a>\n"
+"                        </div>\n"
+"                       % if object.deadline:\n"
+"                            Por favor, responda à pesquisa antes de "
+"${format_date(object.deadline)}.<br/><br/>\n"
+"                        % endif\n"
+"                       <br/><br/>\n"
+"                        <tr><td style=\"padding:15px 20px 10px 20px;"
+"\">${(object.signature or '')| safe}</td></tr>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+
+#. module: fieldservice_survey
+#: model_terms:ir.ui.view,arch_db:fieldservice_survey.fsm_order_form_view
+msgid ""
+"<span class=\"o_stat_text\">Survey</span>\n"
+"                        <span class=\"o_stat_text\">Answer</span>"
+msgstr ""
+"<span class=\"o_stat_text\">Resposta da</span>\n"
+"                        <span class=\"o_stat_text\">Pesquisa</span>"
+
+#. module: fieldservice_survey
+#: code:addons/fieldservice_survey/wizard/fsm_order_survey_submit.py:243
+#, python-format
+msgid ""
+"An survey was requested. Please take time to fill the <a href=\"%s\" "
+"target=\"_blank\">survey</a>"
+msgstr ""
+"Foi solicitada uma pesquisa. Por favor, reserve um tempo para preencher a "
+"<a href=\"%s\" target=\"_blank\">pesquisa</a>"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__deadline
+msgid "Answer Deadline"
+msgstr "Prazo de Resposta"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__attachment_ids
+msgid "Attachments"
+msgstr "Anexos"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__author_id
+msgid "Author"
+msgstr "Autor"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,help:fieldservice_survey.field_fsm_order_survey_submit__author_id
+msgid "Author of the message."
+msgstr "Autor da mensagem."
+
+#. module: fieldservice_survey
+#: model_terms:ir.ui.view,arch_db:fieldservice_survey.fsm_order_survey_submit_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,help:fieldservice_survey.field_survey_survey__is_fsm_order_survey
+msgid "Check this option to restrict the answers to survey managers only."
+msgstr ""
+"Marque essa opção para restringir as respostas apenas aos gerentes de "
+"pesquisa."
+
+#. module: fieldservice_survey
+#: model:ir.model,name:fieldservice_survey.model_res_company
+msgid "Companies"
+msgstr "Empresas"
+
+#. module: fieldservice_survey
+#: model:ir.model,name:fieldservice_survey.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajuste de Configurações"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__body
+msgid "Contents"
+msgstr "Conteúdo"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__display_name
+msgid "Display Name"
+msgstr "Nome Exibido"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,help:fieldservice_survey.field_fsm_order_survey_submit__email_from
+msgid "Email address of the sender"
+msgstr "Endereço de e-mail do remetente"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_survey_user_input__fsm_order_id
+msgid "FSM Order"
+msgstr "Ordem FSM"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_survey_user_input__fsm_order_person_id
+msgid "FSM Order Person "
+msgstr "Pessoa da Ordem FSM "
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_survey_survey__is_fsm_order_survey
+msgid "FSM Order Survey Managers Only"
+msgstr "Somente Gerentes de Ordem FSM"
+
+#. module: fieldservice_survey
+#: model:ir.model,name:fieldservice_survey.model_fsm_order
+msgid "Field Service Order"
+msgstr "Ordem de Serviço de Campo"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_res_config_settings__module_fieldservice_survey
+msgid "Field Service Survey"
+msgstr "Pesquisa de Serviço de Campo"
+
+#. module: fieldservice_survey
+#: code:addons/fieldservice_survey/wizard/fsm_order_survey_submit.py:242
+#, python-format
+msgid "Fill the answer form on survey"
+msgstr "Preencha o formulário de resposta na pesquisa"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__email_from
+msgid "From"
+msgstr "De"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_res_company__fsm_order_survey_template_id
+#: model:ir.model.fields,field_description:fieldservice_survey.field_res_config_settings__fsm_order_survey_template_id
+msgid "Fsm Order Survey Template"
+msgstr "Modelo de Pesquisa de Ordem Fsm"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__id
+msgid "ID"
+msgstr "ID"
+
+#. module: fieldservice_survey
+#: code:addons/fieldservice_survey/controllers/main.py:29
+#: code:addons/fieldservice_survey/controllers/main.py:58
+#, python-format
+msgid "Invalid FSM Order ID"
+msgstr "ID da Ordem FSM inválido"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit____last_update
+msgid "Last Modified on"
+msgstr "Última Modificação em"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__write_uid
+msgid "Last Updated by"
+msgstr "Ultima Atualização por"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__write_date
+msgid "Last Updated on"
+msgstr "Ultima Atualização em"
+
+#. module: fieldservice_survey
+#: code:addons/fieldservice_survey/controllers/main.py:109
+#, python-format
+msgid "No survey found for the given FSM Order"
+msgstr "Não foi encontrada nenhuma pesquisa para o ordem FSM fornecida"
+
+#. module: fieldservice_survey
+#: model_terms:ir.ui.view,arch_db:fieldservice_survey.fsm_order_form_view
+msgid "Partners submitted to answer survey"
+msgstr "Parceiros enviados para responder à pesquisa"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__recipient_ids
+msgid "Recipients"
+msgstr "Destinatários"
+
+#. module: fieldservice_survey
+#: model_terms:ir.ui.view,arch_db:fieldservice_survey.fsm_order_survey_submit_view_form
+msgid "Send"
+msgstr "Enviar"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__subject
+msgid "Subject"
+msgstr "Assunto"
+
+#. module: fieldservice_survey
+#: model_terms:ir.ui.view,arch_db:fieldservice_survey.fsm_order_form_view
+#: model_terms:ir.ui.view,arch_db:fieldservice_survey.fsm_order_survey_submit_view_form
+msgid "Submit Survey"
+msgstr "Enviar Pesquisa"
+
+#. module: fieldservice_survey
+#: model:ir.model,name:fieldservice_survey.model_fsm_order_survey_submit
+msgid "Submit Survey for FSM Order"
+msgstr "Enviar Pesquisa para Ordem de FSM"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order__partner_submitted_answer_survey_ids
+msgid "Submitted Survey"
+msgstr "Pesquisa Enviada"
+
+#. module: fieldservice_survey
+#: model:ir.model,name:fieldservice_survey.model_survey_survey
+#: model_terms:ir.ui.view,arch_db:fieldservice_survey.fsm_order_form_view
+msgid "Survey"
+msgstr "Pesquisa"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__fsm_order_id
+msgid "Survey Field Service Order"
+msgstr "Pesquisa Ordem de Serviço de Campo"
+
+#. module: fieldservice_survey
+#: model:res.groups,name:fieldservice_survey.group_fsm_survey_manager
+msgid "Survey Manager"
+msgstr "Gerente de Pesquisa"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__fsm_order_person_id
+msgid "Survey Person"
+msgstr "Pessoa da Pesquisa"
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__survey_template_id
+msgid "Survey Template"
+msgstr "Modelo de Pesquisa"
+
+#. module: fieldservice_survey
+#: model:res.groups,name:fieldservice_survey.group_fsm_survey_user
+msgid "Survey User"
+msgstr "Usuário da Pesquisa"
+
+#. module: fieldservice_survey
+#: model:ir.model,name:fieldservice_survey.model_survey_user_input
+msgid "Survey User Input"
+msgstr "Entrada do inquérito do utilizador"
+
+#. module: fieldservice_survey
+#: model:mail.template,subject:fieldservice_survey.mail_template_fsm_order_survey_submit
+msgid "Take part in ${ctx.get('fsm_order_name', 'this')} survey"
+msgstr "Participe da pesquisa ${ctx.get('fsm_order_name', 'this)}"
+
+#. module: fieldservice_survey
+#: code:addons/fieldservice_survey/wizard/fsm_order_survey_submit.py:86
+#, python-format
+msgid "Unable to post message, please configure the sender's email address."
+msgstr ""
+"Não é possível enviar a mensagem, configure o endereço de e-mail do "
+"remetente."
+
+#. module: fieldservice_survey
+#: model:ir.model.fields,field_description:fieldservice_survey.field_fsm_order_survey_submit__template_id
+msgid "Use template"
+msgstr "Usar modelo"
+
+#. module: fieldservice_survey
+#: code:addons/fieldservice_survey/controllers/main.py:49
+#, python-format
+msgid "You do not have access to this FSM Order Survey"
+msgstr "Você não tem acesso a esta Pesquisa de Pedido FSM"

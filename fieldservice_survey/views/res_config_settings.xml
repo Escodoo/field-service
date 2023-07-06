@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 - TODAY, Marcel Savegnago <marcel.savegnago@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="res_config_settings_view_employee_form" model="ir.ui.view">
+        <field
+            name="name"
+        >res.config.settings.view.form.inherit.fieldservice.survey</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="fieldservice.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath            
+                expr="//div[@name='module_fieldservice_survey']//div[hasclass('text-muted')]"
+                position="after"
+            >
+                <div
+                    class="content-group"
+                    attrs="{'invisible': [('module_fieldservice_survey', '=', False)]}"
+                >
+                    <div class="row mt16">
+                        <label
+                            for="fsm_order_survey_template_id"
+                            class="col-lg-3 o_light_label"
+                        />
+                        <field name="fsm_order_survey_template_id" />
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

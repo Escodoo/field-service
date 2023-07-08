@@ -12,6 +12,8 @@ class FsmOrder(models.Model):
         return {
             "type": "ir.actions.act_window",
             "view_mode": "form",
+            "view_type": "form",
+            "src_model": "fsm.order",
             "res_model": "fsm.order.survey.submit",
             "target": "new",
             "name": "Submit Survey ",

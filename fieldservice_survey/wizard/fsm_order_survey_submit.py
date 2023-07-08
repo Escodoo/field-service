@@ -89,7 +89,7 @@ class FsmOrderSurveySubmit(models.TransientModel):
                 )
             )
         result = super().default_get(fields_list)
-        fsm_order_id = self.env.context.get("active_id") or result.get("fsm_order_id")
+        fsm_order_id = self._context.get('active_ids', []) or self.env.context.get("active_id") or self._context.get('active_ids', []) or result.get("fsm_order_id")
         fsm_order = self.env["fsm.order"].browse(fsm_order_id)
         if (
             "survey_template_id" in fields_list

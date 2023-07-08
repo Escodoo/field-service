@@ -79,6 +79,9 @@ class ResConfigSettings(models.TransientModel):
         string='Manage Sub-Statuses')
     module_fieldservice_mgmtsystem_nonconformity = fields.Boolean(
         string='Manage Order Non-Conformities')
+    module_fieldservice_survey = fields.Boolean(
+        string="Enable feedback request through surveys"
+    )
 
     # Companies
     auto_populate_persons_on_location = fields.Boolean(

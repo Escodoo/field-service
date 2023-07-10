@@ -61,11 +61,16 @@ class FsmOrderSurveySubmit(models.TransientModel):
         help="Author of the message.",
     )
     survey_template_id = fields.Many2one("survey.survey")
+#    recipient_ids = fields.Many2many(
+#        "res.partner",
+#        compute="_compute_recipients",
+#        store=True,
+#        readonly=False,
+#        string="Recipients",
+#    )
     recipient_ids = fields.Many2many(
         "res.partner",
-        compute="_compute_recipients",
-        store=True,
-        readonly=False,
+        default=lambda self: self.fsm_order_id.location_id.partner_id,
         string="Recipients",
     )
     deadline = fields.Date(

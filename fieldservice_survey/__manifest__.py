@@ -25,8 +25,8 @@
         "data/mail_data.xml",
         "wizard/fsm_order_survey_submit.xml",
     ],
-    "demo": [
-        "demo/fsm_stage.xml",
-        "demo/fsm_order.xml",
-    ],
+    # "demo": [
+    #     "demo/fsm_stage.xml",
+    #     "demo/fsm_order.xml",
+    # ],
 }
